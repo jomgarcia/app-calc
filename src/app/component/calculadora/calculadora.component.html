@@ -1,0 +1,161 @@
+<!-- <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Link Budget Calculator</h1>
+        <p class="lead">Ingrese la potencia transmitida, las ganancias y pérdidas a través del sistema para calcular el Presupuesto de Enlace.</p>
+    </div>
+</div> -->
+<nav class="navbar  sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Link Budget Calculator - Optical Fiber </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+    </div>
+</nav>
+
+<section id="about">
+    <div class="container">
+
+        <header class="section-header">
+            <h3>Link Budget</h3>
+            <p>La pérdida de la trayectoria del espacio libre es la pérdida en la intensidad de la señal de una señal a medida que viaja a través del espacio libre. Este valor generalmente se calcula descontando cualquier obstáculo o reflejo que pueda ocurrir.
+                IEEE lo define como "La pérdida entre dos radiadores isotrópicos en el espacio libre, expresada como una relación de potencia".</p>
+        </header>
+
+        <div class="row about-cols">
+
+            <div class="col-md-6">
+                <div class="about-col">
+                    <div class="img">
+                        <img src="assets/img/fibra-optica.jpeg" alt="" class="img-fluid">
+                        <a href="assets/img/Calculating_fiber_loss_and_distance.pdf" target="_blank" class="btn-get-started scrollto">Leer mas...</a>
+                    </div>
+                    <h2 class="title"><a href="#">Criterios y factores de cálculo</a></h2>
+                    <p>
+                        El diseño de un sistema de fibra óptica es un acto de equilibrio. Al igual que con cualquier sistema, debe establecer criterios para rendimiento y luego determinar cómo cumplir con esos criterios. Es importante recordar que nosotros estamos hablando de
+                        un sistema que es la suma de sus partes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="about-col">
+                    <div class="img">
+                        <img src="assets/img/linkbudget.gif" alt=" " class="img-fluid ">
+                    </div>
+                    <h2 class="title "><a href="# ">Formula de Cálculo</a></h2>
+                    <p>
+                        Received power (dBm) = Transmitted power (dBm) + gains (dB) - losses (dB) El presupuesto del enlace es un valor importante que permite a los ingenieros diseñar sistemas basados en la sensibilidad requerida de un receptor a una distancia determinada.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div class="container">
+    <h3 class="text-center">Link Budget Calculator</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Longitud de la Fibra</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <input [(ngModel)]="longitudFibra" type="number" placeholder="Longitud de la Fibra en km" class="form-control" aria-label="Text input with dropdown button">
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Tipos de Fibra</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <select class="custom-select" (change)="ChangeFibraTipos()" [(ngModel)]="tipoFibra">
+                  <option value="" selected>Choose...</option>
+                  <option value="1">Multimode 62.5/125µm</option>
+                  <option value="2">Single Mode 9µm</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Longitud de Onda</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <select class="custom-select" [(ngModel)]="longitudOnda">
+                  <option value="0" selected>Choose...</option>
+                  <option [ngValue]="i" *ngFor="let i of longitudesDeOnda">{{i}}nm</option>
+                  <!-- <option value="1">850nm</option>
+                  <option value="2">1300nm</option>
+                  <option value="3">1550nm</option> -->
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Cantidad de Conectores</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <input [(ngModel)]="cantidadConectores" type="number" placeholder="Cantidad de Conectores" class="form-control" aria-label="Text input with dropdown button">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Cantidad de Empalmes</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <input [(ngModel)]="cantidadEmpalmes" type="number" placeholder="Cantidad de Empalmes" class="form-control" aria-label="Text input with dropdown button">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Margen de Seguridad</h5>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                </div>
+                <input [(ngModel)]="margenSeguridad" type="number" placeholder="Margen de Seguridad" class="form-control" aria-label="Text input with dropdown button">
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" (click)="calculate()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+
+    Calcular
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Resultado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <h3>An estimated {{resultado | number : '1.2-4'}}dB of power wold be required to transmit across this link</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

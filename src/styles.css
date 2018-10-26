@@ -1,1 +1,245 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background: #fff;
+    color: #666666;
+    font-family: "Open Sans", sans-serif;
+}
+
+a {
+    color: #18d26e;
+    transition: 0.5s;
+}
+
+a:hover,
+a:active,
+a:focus {
+    color: #18d36e;
+    outline: none;
+    text-decoration: none;
+}
+
+p {
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.navbar .navbar-expand-lg {
+    margin-top: 0;
+}
+
+#about {
+    background: url("./assets/img/about-bg.jpg") center top no-repeat fixed;
+    background-size: cover;
+    padding: 60px 0 40px 0;
+    position: relative;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: 9;
+}
+
+#about .container {
+    position: relative;
+    z-index: 10;
+}
+
+#about .about-col {
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+}
+
+#about .about-col .img {
+    position: relative;
+}
+
+#about .about-col .img img {
+    border-radius: 4px 4px 0 0;
+}
+
+#about .about-col .icon {
+    width: 64px;
+    height: 64px;
+    padding-top: 8px;
+    text-align: center;
+    position: absolute;
+    background-color: #18d26e;
+    border-radius: 50%;
+    text-align: center;
+    border: 4px solid #fff;
+    left: calc( 50% - 32px);
+    bottom: -30px;
+    transition: 0.3s;
+}
+
+#about .about-col i {
+    font-size: 36px;
+    line-height: 1;
+    color: #fff;
+    transition: 0.3s;
+}
+
+#about .about-col:hover .icon {
+    background-color: #fff;
+}
+
+#about .about-col:hover i {
+    color: #18d26e;
+}
+
+#about .about-col h2 {
+    color: #000;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 0;
+    margin: 40px 0 12px 0;
+}
+
+#about .about-col h2 a {
+    color: #000;
+}
+
+#about .about-col h2 a:hover {
+    color: #18d26e;
+}
+
+#about .about-col p {
+    font-size: 14px;
+    line-height: 24px;
+    color: #333;
+    margin-bottom: 0;
+    padding: 0 20px 20px 20px;
+}
+
+.btn-get-started {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 32px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    color: #fff;
+    background: #18d26e;
+}
+
+.btn-get-started:hover {
+    background: #fff;
+    color: #18d26e;
+}
+
+.copyright {
+    padding-top: 20px;
+    color: #fff;
+}
+
+#footer {
+    margin-top: 30px;
+}
+
+.modal-header {
+    background-color: #bbfdc5;
+}
+
+.modal-header h5 {
+    color: #004503;
+}
+
+.btn-primary:hover {
+    background: #bbfdc5;
+    color: #000;
+}
+
+.btn-primary {
+    background: #18d26e;
+    border: none;
+}
+
+
+/* social botton */
+
+.middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.btn1 {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #f1f1f1;
+    margin: 10px;
+    border-radius: 30%;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #3498db;
+    overflow: hidden;
+    position: relative;
+}
+
+.btn1 i {
+    line-height: 46px;
+    font-size: 26px;
+    transition: 0.2s linear;
+}
+
+.btn1:hover i {
+    transform: scale(1.3);
+    color: #f1f1f1;
+}
+
+.btn1::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    background: #3498db;
+    transform: rotate(45deg);
+    left: -110%;
+    top: 90%;
+}
+
+.btn1:hover::before {
+    animation: aaa 0.7s 1;
+    top: -10%;
+    left: -10%;
+}
+
+@keyframes aaa {
+    0% {
+        left: -110%;
+        top: 90%;
+    }
+    50% {
+        left: 10%;
+        top: -30%;
+    }
+    100% {
+        top: -10%;
+        left: -10%;
+    }
+}
